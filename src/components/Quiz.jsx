@@ -1,139 +1,108 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Quiz = () => {
+  const [respostas, setRespostas] = useState([]);
+  const [respostasCertas, setRespostasCertas] = useState(0);
 
-    const [respostas, setRespostas] = useState([])
-    const [botaoClicado1, setBotaoClicado1] = useState(false)
-    const [botaoClicado2, setBotaoClicado2] = useState(false)
-    const [botaoClicado3, setBotaoClicado3] = useState(false)
-    const [respostasCertas, setRespostasCertas] = useState(0)
+  const perguntas = [
+    {
+      pergunta: "#1 - O que é Front-end?",
+      alternativas: {
+        A: "Parte de um sistema que é oculta para o usuário.",
+        B: "Parte de um sistema é visível e interativa ao usuário.",
+        C: "Parte lógica que recebe as regras de negócio.",
+        D: "Nenhuma das alternativas anteriores."
+      },
+      respostaCorreta: "B"
+    },
+    {
+      pergunta: "#2 - O que é React JS?",
+      alternativas: {
+        A: "Uma poderosa biblioteca JavaScript.",
+        B: "Uma linguagem de Programação.",
+        C: "Um servidor de Cloud.",
+        D: "Todas as respostas anteriores."
+      },
+      respostaCorreta: "A"
+    },
+    {
+      pergunta: "#3 - Quais são as principais tecnologias do mundo Front-end?",
+      alternativas: {
+        A: "Java, golang e python.",
+        B: "AWS, Google Cloud e Azure.",
+        C: "Kotlin, HTML e CSS.",
+        D: "HTML, CSS e JavaScript"
+      },
+      respostaCorreta: "D"
+    },
+    {
+      pergunta: "#4 - Qual tag HTML é usada para criar uma lista ordenada?",
+      alternativas: {
+        A: "<ul>",
+        B: "<ol> ",
+        C: "<li>",
+        D: " <dl>"
+      },
+      respostaCorreta: "C"
+    }
+  ];
 
-    const resposta1 = 'B'
-    const resposta2 = 'A'
-    const resposta3 = 'D'    
-    
-    const conferirResposta1 = (x) => {
-        const respostaRecebida = x;
-        
-        if(botaoClicado1 === false){
-            setRespostas([...respostas, { pergunta: 'Questão 1', resposta: respostaRecebida }])
-            if(respostaRecebida === resposta1){
-                console.log('Acertou');
-                setRespostasCertas(respostasCertas + 1)
-            }else{
-                console.log('Errou')
-            }
-            setBotaoClicado1(true)
-            
-        }else{
-            alert('Você já respondeu essa pergunta')
-        }
-                
+  const conferirResposta = (perguntaIndex, resposta) => {
+    if (respostas.includes(perguntaIndex)) {
+      alert('Você já respondeu essa pergunta');
+      return;
     }
 
-    const conferirResposta2 = (x) => {
-        const respostaRecebida = x;
-        if(botaoClicado2 === false){
-            setRespostas([...respostas, { pergunta: 'Questão 2', resposta: respostaRecebida }])
-            if(respostaRecebida === resposta2){
-                console.log('Acertou');
-                setRespostasCertas(respostasCertas + 1)
-            }else{
-                console.log('Errou')
-            }
-            setBotaoClicado2(true)
-        }else{
-            alert('Você já respondeu essa pergunta')
-        }
-        
-    }
+    const pergunta = perguntas[perguntaIndex];
+    const respostaRecebida = resposta;
 
-    const conferirResposta3 = (x) => {
-        const respostaRecebida = x;
-        if(botaoClicado3 === false){
-            setRespostas([...respostas, { pergunta: 'Questão 3', resposta: respostaRecebida }])
-            if(respostaRecebida === resposta3){
-                console.log('Acertou');
-                setRespostasCertas(respostasCertas + 1)
-            }else{
-                console.log('Errou')
-            }
-            setBotaoClicado3(true)
-        }else{
-            alert('Você já respondeu essa pergunta')
-        }
-        
-    }
+    setRespostas([...respostas, perguntaIndex]);
 
-    const finalizarQuiz = () => {
-        alert(`Respostas Corretas: ${respostasCertas}/3`)
+    if (respostaRecebida === pergunta.respostaCorreta) {
+      console.log('Acertou');
+      setRespostasCertas(respostasCertas + 1);
+    } else {
+      console.log('Errou');
     }
+  };
 
-    return(
-        <> 
-            <ul id="questRespondidas">
-                {respostas.map((item, index) => (
-                <li key={index}>{`${item.pergunta}: Alternativa ${item.resposta}`}</li>
-                ))}
-            </ul>              
-            <div id="q1">
-                <h3>#1 - O que é Front-end?</h3>
-                <ul>
-                    <li>
-                        A. Parte de um sistema que é oculta para o usuário. <button onClick={() => conferirResposta1('A')}>Escolher</button>
-                    </li>
-                    <li>
-                        B. Parte de um sistema é visível e interativa ao usuário. <button onClick={() => conferirResposta1('B')}>Escolher</button>
-                    </li>
-                    <li>
-                        C. Parte lógica que recebe as regras de negócio. <button onClick={() => conferirResposta1('C')}>Escolher</button>
-                    </li>
-                    <li>
-                        D. Nenhuma das alternativas anteriores. <button onClick={() => conferirResposta1('D')}>Escolher</button>
-                    </li>
-                </ul>
-            </div>
-            <div id="q2">
-                <h3>#2 - O que é React JS?</h3>
-                <ul>
-                    <li>
-                        A. Uma poderosa biblioteca JavaScript<button onClick={() => conferirResposta2('A')}>Escolher</button>
-                    </li>
-                    <li>
-                        B. Uma linguagem de Programação.<button onClick={() => conferirResposta2('B')}>Escolher</button>
-                    </li>
-                    <li>
-                        C. Um servidor de Cloud. <button onClick={() => conferirResposta2('C')}>Escolher</button>
-                    </li>
-                    <li>
-                        D. Todas as respostas anteriores. <button onClick={() => conferirResposta2('D')}>Escolher</button>
-                    </li>
-                </ul>
-            </div>
-            <div id="q3">
-                <h3>#3 - Quais são as principais tecnologias do mundo Front-end?</h3>
-                <ul>
-                    <li>
-                        A. Java, golang e python. <button onClick={() => conferirResposta3('A')}>Escolher</button>
-                    </li>
-                    <li>
-                        B. AWS, Google Cloud e Azure. <button onClick={() => conferirResposta3('B')}>Escolher</button>
-                    </li>
-                    <li>
-                        C. Kotlin, HTML e CSS. <button onClick={() => conferirResposta3('C')}>Escolher</button>
-                    </li>
-                    <li>
-                        D. HTML, CSS e JavaScript <button onClick={() => conferirResposta3('D')}>Escolher</button>
-                    </li>
-                </ul>
-            </div>
-            <div id="bt-fim">
-                <button onClick={() => finalizarQuiz()}>Finalizar Quiz</button>
-            </div>
-            
-        </>
-    )
-    
-}
+  const reiniciarQuiz = () => {
+    setRespostas([]); // Reseta as respostas
+    setRespostasCertas(0); // Reseta as respostas corretas
+  };
+
+  const finalizarQuiz = () => {
+    alert(`Respostas Corretas: ${respostasCertas}/4`);
+  };
+
+  return (
+    <div>
+      <ul className="quest-respondidas">
+        {respostas.map((item, index) => (
+          <li key={index}>{`Questão ${item}: Alternativa ${perguntas[item].respostaCorreta}`}</li>
+        ))}
+      </ul>
+
+      {perguntas.map((pergunta, index) => (
+        <div key={index} id={`q${index + 1}`} className="question">
+          <h3>{pergunta.pergunta}</h3>
+          <ul>
+            {Object.entries(pergunta.alternativas).map(([alternativa, texto]) => (
+              <li key={alternativa}>
+                {`${alternativa}. ${texto}`}
+                <button onClick={() => conferirResposta(index, alternativa)}>Escolher</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      <div id="bt-fim" className="final-button">
+        <button onClick={() => reiniciarQuiz()}>Reiniciar Quiz</button> 
+        <button onClick={() => finalizarQuiz()}>Finalizar Quiz</button>
+      </div>
+    </div>
+  );
+};
 
 export default Quiz;
