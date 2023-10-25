@@ -79,7 +79,7 @@ const Quiz = () => {
     <div>
       <ul className="quest-respondidas">
         {respostas.map((item, index) => (
-          <li key={index}>{`Questão ${item}: Alternativa ${perguntas[item].respostaCorreta}`}</li>
+          <li key={index}>{`Questão ${item + 1}: Alternativa ${perguntas[item].respostaCorreta}`}</li>
         ))}
       </ul>
 
