@@ -56,7 +56,7 @@ const Quiz = () => {
     const pergunta = perguntas[perguntaIndex];
     const respostaRecebida = resposta;
 
-    setRespostas([...respostas, perguntaIndex]);
+    setRespostas([...respostas, {perguntaIndex, respostaRecebida}]);
 
     if (respostaRecebida === pergunta.respostaCorreta) {
       console.log('Acertou');
@@ -79,7 +79,7 @@ const Quiz = () => {
     <div>
       <ul className="quest-respondidas">
         {respostas.map((item, index) => (
-          <li key={index}>{`Questão ${item + 1}: Alternativa ${perguntas[item].respostaCorreta}`}</li>
+          <li key={index}>{`Questão ${item.perguntaIndex + 1}: Alternativa ${item.respostaRecebida}`}</li>
         ))}
       </ul>
 
