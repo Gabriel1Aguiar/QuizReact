@@ -1,0 +1,25 @@
+.questao {
+   text-align: left;
+   font-size: 24px; 
+   font-weight: bold; 
+   margin-bottom: 10px; 
+   color: #007bff; 
+   margin-left: 30px;
+ }
+
+ .container {
+   max-width: 2000px;
+   padding: 20px;
+   background-color: #fff;
+   border-radius: 5px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+
+ .footer_copy {
+   border-top: 2px solid #2c2c2c;
+   color: #5c5c5c;
+   padding: 10px;
+   height: 40px;
+   font-size: 12px;
+   margin-top: 30px;
+ }

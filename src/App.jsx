@@ -1,20 +1,19 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
 import Quiz from "./components/Quiz";
-import "./App.css"; // Importe o arquivo CSS
+import styles from "./components/Quiz.module.css"; 
+
 function App() {
   return (
     <>
-      <div id="container">
+      <div  className={styles.container}>
         <h1>Quiz Front-End</h1>
         <div>
-          <p id="questao">Questões Respondidas:</p>
+          <p className={styles.questao}>Questões Respondidas:</p>
         </div>
       </div>
       <Quiz />
 
       <footer>
-      <div id="footer_copy">
+         <div className={styles.footer_copy}>
             Copyright- Todos os dirietos reservados
         </div>
       </footer>

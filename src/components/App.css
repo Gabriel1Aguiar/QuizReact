@@ -1,28 +1,10 @@
-
 body {
    font-family: Arial, sans-serif;
    background-color: #f4f4f4;
    margin: 0;
    padding: 0;
  }
- 
- .container {
-   max-width: 800px;
-   margin: 0 auto;
-   padding: 20px;
-   background-color: #fff;
-   border-radius: 5px;
-   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- }
 
- #questao {
-   text-align: left;
-   font-size: 24px; 
-   font-weight: bold; 
-   margin-bottom: 10px; 
-   color: #007bff; 
-   margin-left: 30px;
- }
  h1 {
    font-size: 24px;
    margin-bottom: 20px;
@@ -63,8 +45,7 @@ body {
    text-align: center;
  }
  
- /* Estilos específicos para cada pergunta */
- #q1, #q2, #q3,#q4 {
+ #q1, #q2, #q3,#q4, #q5 {
    background-color: #f9f9f9;
    padding: 10px;
    border: 1px solid #ddd;
@@ -72,16 +53,8 @@ body {
    margin: 20px 0;
  }
  
- #q1 h3, #q2 h3, #q3 #q4 h3 {
+ #q1 h3, #q2 h3, #q3 #q4 #q5 h3 {
    font-size: 20px;
    color: #333;
  }
 
- #footer_copy{
-   border-top: 2px solid #2c2c2c;
-   color: #5c5c5c;
-   padding: 10px;
-   height: 40px;
-   font-size: 12px;
-   margin-top: 30px;
-}

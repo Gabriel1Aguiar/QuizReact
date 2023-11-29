@@ -1,47 +1,58 @@
 {
-  "perguntas": [{
-      "id":1,
-      "pergunta": "#1 - O que é Front-end?",
+   "perguntas": [{
+         "id":1,
+         "pergunta": "#1 - O que é Front-end?",
+         "alternativas": {
+         "A": "Parte de um sistema que é oculta para o usuário.",
+         "B": "Parte de um sistema é visível e interativa ao usuário.",
+         "C": "Parte lógica que recebe as regras de negócio.",
+         "D": "Nenhuma das alternativas anteriores."
+         },
+         "respostaCorreta": "B"
+   },
+   {
+         "id":2,
+         "pergunta": "#2 - O que é React JS?",
+         "alternativas": {
+         "A": "Uma poderosa biblioteca JavaScript.",
+         "B": "Uma linguagem de Programação.",
+         "C": "Um servidor de Cloud.",
+         "D": "Todas as respostas anteriores."
+         },
+         "respostaCorreta": "A"
+   },
+   {
+         "id":3,
+         "pergunta": "#3 - Quais são as principais tecnologias do mundo Front-end?",
+         "alternativas": {
+         "A": "Java, golang e python.",
+         "B": "AWS, Google Cloud e Azure.",
+         "C": "Kotlin, HTML e CSS.",
+         "D": "HTML, CSS e JavaScript"
+         },
+         "respostaCorreta": "D"
+   },
+   {
+         "id":4,
+         "pergunta": "#4 - Qual tag HTML é usada para criar uma lista ordenada?",
+         "alternativas": {
+         "A": "<ul>",
+         "B": "<ol> ",
+         "C": "<li>",
+         "D": " <dl>"
+         },
+         "respostaCorreta": "C"
+   },
+   {
+      "id":5,
+      "pergunta": "#5 Qual dos seguintes pré-processadores de CSS é amplamente utilizado para facilitar o desenvolvimento frontend?",
       "alternativas": {
-      "A": "Parte de um sistema que é oculta para o usuário.",
-      "B": "Parte de um sistema é visível e interativa ao usuário.",
-      "C": "Parte lógica que recebe as regras de negócio.",
-      "D": "Nenhuma das alternativas anteriores."
-      },
-      "respostaCorreta": "B"
-  },
-  {
-      "id":2,
-      "pergunta": "#2 - O que é React JS?",
-      "alternativas": {
-      "A": "Uma poderosa biblioteca JavaScript.",
-      "B": "Uma linguagem de Programação.",
-      "C": "Um servidor de Cloud.",
-      "D": "Todas as respostas anteriores."
+      "A": " SASS",
+      "B": " Java ",
+      "C": " Python ",
+      "D": " Ruby "
       },
       "respostaCorreta": "A"
-  },
-  {
-      "id":3,
-      "pergunta": "#3 - Quais são as principais tecnologias do mundo Front-end?",
-      "alternativas": {
-      "A": "Java, golang e python.",
-      "B": "AWS, Google Cloud e Azure.",
-      "C": "Kotlin, HTML e CSS.",
-      "D": "HTML, CSS e JavaScript"
-      },
-      "respostaCorreta": "D"
-  },
-  {
-      "id":4,
-      "pergunta": "#4 - Qual tag HTML é usada para criar uma lista ordenada?",
-      "alternativas": {
-      "A": "<ul>",
-      "B": "<ol> ",
-      "C": "<li>",
-      "D": " <dl>"
-      },
-      "respostaCorreta": "C"
-  }
-]
+   }
+   ]
 }

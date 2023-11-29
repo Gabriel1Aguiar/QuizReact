@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Quiz = () => {
   const [respostas, setRespostas] = useState([]);
   const [respostasCertas, setRespostasCertas] = useState(0);
   const [perguntas, setPerguntas] = useState([]);
-  const url = "https://api-quiz-sigma.vercel.app/perguntas"
+  const url = "http://localhost:3000/perguntas"
 
   useEffect(() => {
     async function fetchData(){
