@@ -1,96 +1,66 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Quiz = () => {
   const [respostas, setRespostas] = useState([]);
   const [respostasCertas, setRespostasCertas] = useState(0);
+  const [perguntas, setPerguntas] = useState([]);
+  const url = "http://localhost:3000/perguntas"
 
-  const perguntas = [
-    {
-      pergunta: "#1 - O que é Front-end?",
-      alternativas: {
-        A: "Parte de um sistema que é oculta para o usuário.",
-        B: "Parte de um sistema é visível e interativa ao usuário.",
-        C: "Parte lógica que recebe as regras de negócio.",
-        D: "Nenhuma das alternativas anteriores."
-      },
-      respostaCorreta: "B"
-    },
-    {
-      pergunta: "#2 - O que é React JS?",
-      alternativas: {
-        A: "Uma poderosa biblioteca JavaScript.",
-        B: "Uma linguagem de Programação.",
-        C: "Um servidor de Cloud.",
-        D: "Todas as respostas anteriores."
-      },
-      respostaCorreta: "A"
-    },
-    {
-      pergunta: "#3 - Quais são as principais tecnologias do mundo Front-end?",
-      alternativas: {
-        A: "Java, golang e python.",
-        B: "AWS, Google Cloud e Azure.",
-        C: "Kotlin, HTML e CSS.",
-        D: "HTML, CSS e JavaScript"
-      },
-      respostaCorreta: "D"
-    },
-    {
-      pergunta: "#4 - Qual tag HTML é usada para criar uma lista ordenada?",
-      alternativas: {
-        A: "<ul>",
-        B: "<ol> ",
-        C: "<li>",
-        D: " <dl>"
-      },
-      respostaCorreta: "C"
+  useEffect(() => {
+    async function fetchData(){
+      const response = await fetch(url);
+      const data = await response.json()
+
+      setPerguntas(data)
     }
-  ];
+    fetchData();
+  }, []);
 
-  const conferirResposta = (perguntaIndex, resposta) => {
-    if (respostas.includes(perguntaIndex)) {
-      alert('Você já respondeu essa pergunta');
+  const conferirResposta = (perguntaId, resposta) => {
+    if (respostas.some((item) => item.perguntaId === perguntaId)) {
+      alert("Você já respondeu essa pergunta");
       return;
     }
 
-    const pergunta = perguntas[perguntaIndex];
+    const pergunta = perguntas.find((item) => item.id === perguntaId);
     const respostaRecebida = resposta;
 
-    setRespostas([...respostas, {perguntaIndex, respostaRecebida}]);
+    setRespostas([...respostas, { perguntaId, respostaRecebida }]);
 
     if (respostaRecebida === pergunta.respostaCorreta) {
-      console.log('Acertou');
+      console.log("Acertou");
       setRespostasCertas(respostasCertas + 1);
     } else {
-      console.log('Errou');
+      console.log("Errou");
     }
   };
 
   const reiniciarQuiz = () => {
-    setRespostas([]); // Reseta as respostas
-    setRespostasCertas(0); // Reseta as respostas corretas
+    setRespostas([]); 
+    setRespostasCertas(0); 
   };
 
   const finalizarQuiz = () => {
-    alert(`Respostas Corretas: ${respostasCertas}/4`);
+    alert(`Respostas Corretas: ${respostasCertas}/${perguntas.length}`);
+    setRespostas([])
   };
 
   return (
     <div>
       <ul className="quest-respondidas">
         {respostas.map((item, index) => (
-          <li key={index}>{`Questão ${item.perguntaIndex + 1}: Alternativa ${item.respostaRecebida}`}</li>
+          <li key={index}>{`Questão ${item.perguntaId}: Alternativa ${item.respostaRecebida}`}</li>
         ))}
       </ul>
 
-      {perguntas.map((pergunta, index) => (
-        <div key={index} id={`q${index + 1}`} className="question">
+      {perguntas.map((pergunta) => (
+        <div key={pergunta.id} id={`q${pergunta.id}`} className="question">
           <h3>{pergunta.pergunta}</h3>
           <ul>
             {Object.entries(pergunta.alternativas).map(([alternativa, texto]) => (
               <li key={alternativa}>
                 {`${alternativa}. ${texto}`}
-                <button onClick={() => conferirResposta(index, alternativa)}>Escolher</button>
+                <button onClick={() => conferirResposta(pergunta.id, alternativa)}>Escolher</button>
               </li>
             ))}
           </ul>
@@ -98,7 +68,7 @@ const Quiz = () => {
       ))}
 
       <div id="bt-fim" className="final-button">
-        <button onClick={() => reiniciarQuiz()}>Reiniciar Quiz</button> 
+        <button onClick={() => reiniciarQuiz()}>Reiniciar Quiz</button>
         <button onClick={() => finalizarQuiz()}>Finalizar Quiz</button>
       </div>
     </div>
