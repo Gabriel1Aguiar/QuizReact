@@ -4,7 +4,7 @@ const Quiz = () => {
   const [respostas, setRespostas] = useState([]);
   const [respostasCertas, setRespostasCertas] = useState(0);
   const [perguntas, setPerguntas] = useState([]);
-  const url = "http://localhost:3000/perguntas"
+  const url = "https://api-quiz-sigma.vercel.app/perguntas"
 
   useEffect(() => {
     async function fetchData(){
